@@ -1,0 +1,85 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+// Initialize the top of the stack to -1
+int top = -1;
+
+// Function to push an element onto the stack
+void push(int n,int a[])
+{
+    int data;
+    if(top>=n-1)
+    {
+        printf("Stack is full\n");
+
+    }
+    else {
+
+
+        top++;
+        printf("Enter data\n");
+        scanf("%d", &data);
+        a[top] = data;
+    }
+}
+// Function to pop an element from the stack
+void pop(int a[]) {
+    // Check if the stack is empty
+    if (top < 0) {
+        printf("Stack is empty\n");
+    } else {
+        // Display and decrement top
+        printf("Element %d was deleted\n", a[top]);
+        top--;
+    }
+}
+
+// Function to display the elements of the stack
+void display(int a[]) {
+    int i;
+
+    // Check if the stack is empty
+    if (top < 0) {
+        printf("Stack is empty\n");
+    } else {
+        // Display elements from the top of the stack to the bottom
+        for (i = top; i >= 0; i--) {
+            printf("%d ", a[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int ch, a[20], n;
+
+    // Input the limit
+    printf("Enter limit: ");
+    scanf("%d", &n);
+
+    // Menu-driven program
+    while (1) {
+        // Display menu options
+        printf("\nMenu:\n1. Push\n2. Pop\n3. Display\n4. Exit\nEnter your choice: ");
+        scanf("%d", &ch);
+
+        switch (ch) {
+            case 1:
+                push(n, a);
+                break;
+            case 2:
+                pop(a);
+                break;
+            case 3:
+                display(a);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
